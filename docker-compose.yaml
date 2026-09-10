@@ -12,6 +12,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: shopsphere-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@shopsphere.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5433:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    restart: unless-stopped
 
 volumes:
   postgres_data:
+  pgadmin_data:
